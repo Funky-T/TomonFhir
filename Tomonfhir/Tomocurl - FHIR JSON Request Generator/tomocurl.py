@@ -6,7 +6,7 @@ import sys
 import json
 
 #set url target
-localhost_url = "http://localhost:8000"
+host_url = "http://localhost:8000"
 
 #set request headers
 headers = CaseInsensitiveDict()
@@ -39,7 +39,7 @@ for file in list_of_files:
         f = open(filename)
         fhir_bundle = json.dumps(json.load(f))
         #sends the request to target url and capture the response
-        response = requests.post(url=localhost_url, headers=headers, data=fhir_bundle)
+        response = requests.post(url=host_url, headers=headers, data=fhir_bundle)
         #prints the response to console
         print(response)
         if (response.status_code == 200):
