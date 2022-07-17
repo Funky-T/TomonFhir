@@ -7,7 +7,7 @@ from urllib3 import response
 from bs4 import BeautifulSoup
 
 #set url target
-localhost_location_url = "http://localhost:8000/DEFAULT/Location"
+host_url = "http://localhost:8000/DEFAULT/Location"
 #set request headers
 headers = CaseInsensitiveDict()
 headers["Content-Type"] = "application/json"
@@ -21,7 +21,7 @@ def delete_locations():
         exit()
     for id in range(start, stop):
         print("deleting location with id = " + str(id))
-        response = requests.delete(url=localhost_location_url + "/" + str(id), headers=headers)
+        response = requests.delete(url=host_url + "/" + str(id), headers=headers)
         if (200 <= response.status_code <= 299):
             print("Successfully deleted resource with id: " + str(id))
         else:
@@ -82,7 +82,7 @@ for request in range(requested_locations):
     print(location_json)
 
     #send location to endpoint and capture response
-    response = requests.post(url=localhost_location_url, headers=headers, data=location_json)
+    response = requests.post(url=host_url, headers=headers, data=location_json)
 
     #prints the response to console
     print(response)
